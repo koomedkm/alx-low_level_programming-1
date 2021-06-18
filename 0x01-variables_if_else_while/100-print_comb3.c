@@ -1,29 +1,46 @@
+#include <stdlib.h>
+#include <time.h>
 #include <stdio.h>
 
+/* betty style doc for function main goes there */
 /**
- *  * main - prints all possible different combinations of two digits
- *   * Return: ALways 0 (Success)
- *    */
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
-		int n, m;
+	int i;
+	int j;
 
-			for (n = 48; n <= 56; n++)
-					{
-								for (m = 49; m <= 57; m++)
-											{
-															if (m > n)
-																			{
-																								putchar(n);
-																												putchar(m);
-																																if (n != 56 || m != 57)
-																																					{
-																																											putchar(',');
-																																																putchar(' ');
-																																																				}
-																																			}
-																	}
-									}
-				putchar('\n');
-					return (0);
+	i = 48;
+	j = 49;
+	while  ((i < 57) && (j < 58))
+	{
+		putchar(i);
+		putchar(j);
+		if ((i == 56) && (j == 57))
+		{
+			putchar('\n');
+			i++;
+			j++;
+		}
+		else
+		{
+			putchar(44);
+			putchar(32);
+			if (j < 57)
+			{
+				j++;
+			}
+			else
+			{
+				i++;
+				j = 1 + i;
+			}
+		}
+
+	}
+
+	return (0);
 }
