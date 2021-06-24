@@ -1,1 +1,1 @@
-**This directory contains files for a projdct on c debugging
+**This directory contains files for a project on c debugging**
