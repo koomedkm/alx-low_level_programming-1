@@ -16,4 +16,3 @@ void *malloc_checked(unsigned int b)
 		exit(98);
 	return (p);
 }
-© 2021 GitHub, In
