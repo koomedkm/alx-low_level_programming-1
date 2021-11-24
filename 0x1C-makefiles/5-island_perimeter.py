@@ -1,31 +1,44 @@
 #!/usr/bin/python3
-"""Module that calculates the perimeter of an island in a grid."""
-
-
-def num_water_neighbors(grid, i, j):
-    """Returns the number of water neighbors a cell has in a grid."""
-
-    num = 0
-
-    if i <= 0 or not grid[i - 1][j]:
-        num += 1
-    if j <= 0 or not grid[i][j - 1]:
-        num += 1
-    if j >= len(grid[i]) - 1 or not grid[i][j + 1]:
-        num += 1
-    if i >= len(grid) - 1 or not grid[i + 1][j]:
-        num += 1
-
-    return num
+"""island perimeter"""
 
 
 def island_perimeter(grid):
-    """Returns the perimeter of the island in grid."""
+    """returns perimeter"""
+    count = 0
+    index = 0
 
-    perim = 0
-    for i in range(len(grid)):
-        for j in range(len(grid[i])):
-            if grid[i][j]:
-                perim += num_water_neighbors(grid, i, j)
+    if not isinstance(grid, list):
+        return 0
 
-    return perim
+    for row in grid:
+        row_len = len(row)
+    row_len += 2
+
+    grid_line = []
+    i = 0
+    while i < row_len:
+        grid_line.append(0)
+        i += 1
+    for row in grid:
+        grid_line.append(0)
+        for item in row:
+            grid_line.append(item)
+        grid_line.append(0)
+    i = 0
+    while i < row_len:
+        grid_line.append(0)
+        i += 1
+
+    for item in grid_line:
+        if item == 1:
+            if grid_line[index - row_len] == 0:
+                count += 1
+            if grid_line[index - 1] == 0:
+                count += 1
+            if grid_line[index + 1] == 0:
+                count += 1
+            if grid_line[index + row_len] == 0:
+                count += 1
+        index += 1
+
+    return count
